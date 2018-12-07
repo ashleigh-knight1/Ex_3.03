@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<a href="/add"> Add a Task</a><br />
+<table>
+    <tr>
+        <th> Task Name</th>
+        <th> Priority</th>
+        <th> Description</th>
+        <th> Due Date</th>
+        <td> Actions</td>
+    </tr>
+    <tr th:each="todo : ${todos}">
+        <td th:text="${todo.taskname}"></td>
+        <td th:text="${todo.priority}"></td>
+        <td th:text="${todo.description}"></td>
+        <td th:text="${todo.duedate}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${todo.id})}">Update</a>-
+            <a th:href="@{/detail/{id}(id=${todo.id})}">Details</a>-
+            <a th:href="@{/delete/{id}(id=${todo.id})}">Delete</a>
+        </td></tr>
+</table>
+</body>
+</html>
